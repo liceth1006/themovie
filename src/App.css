@@ -1,38 +1,53 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.App{
+  margin: 0;
+  padding: 0;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  :root {
+    --background-first-color: #e0f004;
+    --background-color:#14141480;
+    --background-button-color: #e0f004;
+    --background-second-button-color: #e2f864;
+    --background-display-color: #ffffff6e;
+    --first-color: #fffcfc;
+    --second-color:#ffffff;
   }
-  to {
-    transform: rotate(360deg);
+  [data-theme="Kawai"] {
+    --background-first-color: #e0f004;
+    --background-color:#ffffff80;
+    --background-second-color:#000000;
+    --background-button-color: #00D1E0;
+    --background-second-button-color: #E67CF3;
+    --background-display-color: #F0D4CF;
+    --first-color: #1b0220;
+    --second-color:#000000;
   }
-}
+  [data-theme="universe"] {
+    --background-first-color: #e0f004
+    --background-color:#14141480;
+    --background-button-color: #e0f004;
+    --background-second-button-color: #e2f864;
+    --background-display-color: #ffffff6e;
+    --first-color: #fffcfc;
+    --second-color:#ffffff;
+  }
+ 
+  
+  
+  body{
+    background-color: var(--background-second-color);
+    background-image: var(--background-first-color);
+    background-size: cover;
+    background-position: center; 
+  }
+  
+  .text-color{
+    color: var(--first-color);
+    
+  }
+  
+  .text-center{
+    text-decoration:dotted;
+      
+  }
+  
+  
