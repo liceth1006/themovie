@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import Home from "./Home";
 
 function Navbar() {
   const [filmData, setFilmData] = useState(null); //datos de busqueda, consulta
@@ -22,13 +23,13 @@ function Navbar() {
     };
 
     fetch(
-      `https://api.themoviedb.org/3/search/movie?query=${consultaName}&include_adult=false&language=en-US&page=1`,
+      `https://api.themoviedb.org/3/search/movie?query=${consultaName}&include_adult=false&language=es-US&page=1`,
       options
     )
       .then((response) => response.json())
-      .then((response) => {
-        setFilmData(response.results); // asigna los resultados al estado movieData
-        console.log(filmData);
+      .then((data) => {
+        setFilmData(data.results);
+        console.log(data.results)
       })
       .catch((err) => console.error(err));
     //tratar de implementar una alerta "consulta no valida"
@@ -46,7 +47,6 @@ function Navbar() {
   };
 
   return (
-
       <div>
         <nav className="navbar navbar-expand-lg ">
           <div className="container-fluid bg-dark">
@@ -67,11 +67,11 @@ function Navbar() {
   
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                <li className="nav-item">
-                  <Link className="nav-link active text-danger" aria-current="page" to="/">
+                {/* <li className="nav-item">
+                  <Link className="nav-link active text-danger" to="/">
                     <h3>Home</h3>
                   </Link>
-                </li>
+                </li> */}
                 <li className="nav-item">
                   <Link className="nav-link text-danger" to="/Categorias">
                     <h3>Categorias</h3>
@@ -97,6 +97,7 @@ function Navbar() {
             </div>
           </div>
         </nav>
+        <Home data={filmData} onClick={getFilmData} />
       </div>
     );
   }
