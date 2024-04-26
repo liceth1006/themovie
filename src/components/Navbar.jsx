@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 import { useState } from 'react';
 
 function Navbar() {
@@ -64,18 +65,10 @@ function Navbar() {
           <li className="nav-item">
             <a className="nav-link text-danger" href="#"><h3>Link</h3></a>
           </li>
-          <li className="nav-item dropdown">
-            <a className="nav-link dropdown-toggle text-danger" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <li className="nav-item ">
+            <Link className="nav-link  text-danger"   to="/Categorias" >
               <h3>Categorias</h3>
-            </a>
-            <ul className="dropdown-menu">
-              <li><a className="dropdown-item" href="/">Action</a></li>
-              <li><a className="dropdown-item" href="#">Comedia</a></li>
-              <li><a className="dropdown-item" href="#">Terror</a></li>
-              <li><a className="dropdown-item" href="#">Drama</a></li>
-              <li><a className="dropdown-item" href="#">Suspenso</a></li>
-              <li><a className="dropdown-item" href="#">Documentales</a></li>
-            </ul>
+            </Link>
           </li>
           <li className="nav-item">
             <a className="nav-link disabled text-danger" aria-disabled="true"><h3>Favoritos</h3></a>

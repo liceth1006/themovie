@@ -3,7 +3,7 @@
   padding: 0;
   }
   :root {
-    --background-first-color: #e0f004;
+    --background-first-color: #000000;
     --background-color:#14141480;
     --background-button-color: #e0f004;
     --background-second-button-color: #e2f864;
@@ -34,8 +34,7 @@
   
   
   body{
-    background-color: var(--background-second-color);
-    background-image: var(--background-first-color);
+    background-color: var(--background-first-color);
     background-size: cover;
     background-position: center; 
   }
