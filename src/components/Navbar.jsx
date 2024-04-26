@@ -1,46 +1,104 @@
 import React from 'react'
+import { useState } from 'react';
 
 function Navbar() {
+
+  const [filmData, setFilmData] = useState(null); //datos de busqueda, consulta 
+  const [consultaName, setConsultaName] = useState(""); //almacenar el nombre de la pelicula
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    getFilmData();
+  };
+
+  const getFilmData = () => {
+    const options = {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ZDA2YjBkM2IwZGM1ZDVhMWFhOWY3ZDIyYTI1MmQwZSIsInN1YiI6IjY2MjcxMWY5NjNkOTM3MDE4Nzc1MDg3MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.cxo7OjugWoo6YDq_7k0ka_uXLKFROT29JCmXm7thpaQ'
+      }
+    };
+    
+    fetch(`https://api.themoviedb.org/3/search/movie?query=${consultaName}&include_adult=false&language=en-US&page=1`, options)
+        .then(response => response.json())
+        .then(response => {
+          setFilmData(response.results); // asigna los resultados al estado movieData
+          console.log(filmData);
+        })
+        .catch(err => console.error(err)); 
+        //tratar de implementar una alerta "consulta no valida"
+  };
+
+
+
+  const handleChange = (event) => { // realizar la busqueda
+    setConsultaName(event.target.value);
+  };
+
+  const handleReset = () => { //limpia el formulario para generar otra busqueda
+    setConsultaName("");
+    setFilmData(null);
+  };
+
   return (
   <div>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
-    <div className="container-fluid">
-      <a className="navbar-brand" href="/">Navbar</a>
+     <div>
+     <nav className="navbar navbar-expand-lg bg-body-tertiary">
+    <div className="container-fluid bg-dark">
+
+
+      
+      <a href="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"></a>
+      <img src={require("../imagenes/CinemaApp.png")} className="img-thumbnail" width="200" height="300"/>
+
       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
       </button>
+      
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
           <li className="nav-item">
-            <a className="nav-link active" aria-current="page" href="#">Home</a>
+            <a className="nav-link active text-danger" aria-current="page" href="#"><h3>Home</h3></a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Link</a>
+            <a className="nav-link text-danger" href="#"><h3>Link</h3></a>
           </li>
           <li className="nav-item dropdown">
-            <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
+            <a className="nav-link dropdown-toggle text-danger" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <h3>Categorias</h3>
             </a>
             <ul className="dropdown-menu">
               <li><a className="dropdown-item" href="/">Action</a></li>
-              <li><a className="dropdown-item" href="#">Another action</a></li>
-              <li> className="dropdown-divider"</li>
-              <li><a className="dropdown-item" href="#">Something else here</a></li>
+              <li><a className="dropdown-item" href="#">Comedia</a></li>
+              <li><a className="dropdown-item" href="#">Terror</a></li>
+              <li><a className="dropdown-item" href="#">Drama</a></li>
+              <li><a className="dropdown-item" href="#">Suspenso</a></li>
+              <li><a className="dropdown-item" href="#">Documentales</a></li>
             </ul>
           </li>
           <li className="nav-item">
-            <a className="nav-link disabled" aria-disabled="true">Disabled</a>
+            <a className="nav-link disabled text-danger" aria-disabled="true"><h3>Favoritos</h3></a>
           </li>
         </ul>
-        <form className="d-flex" role="search">
-          <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-          <button className="btn btn-outline-success" type="submit">Search</button>
+       
+        <form className="d-flex border border-primary rounded-3"  role="search" onSubmit={handleSubmit}>
+        <input type="text" onChange={handleChange} />
+        
+          <button type="submit"className="d-flex border border-danger rounded-3"><h4>Ver película!</h4></button>
+          <button type="reset" className="d-flex border border-danger rounded-3" onClick={handleReset}><h4>Restablecer</h4></button> 
+        
         </form>
+          
+        
       </div>
     </div>
   </nav>
   </div>
+  </div>
+
+  
   )
 }
 
-export default Navbar
+export default Navbar;
