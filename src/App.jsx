@@ -8,10 +8,11 @@ import Categories from './components/Categories/Categories';
 function App() {
   return (
     <Router>
-    <div className="App bg-dark  text-white">
+    <div className="App bg-dark  text-white bg-color">
      <Navbar></Navbar>
      <Routes>
      <Route path="/Categorias" element={<Categories />} />
+     <Route path="/Home" element={<Categories />} />
      </Routes>
     </div>
    </Router>

@@ -55,30 +55,27 @@ function Genres({ onGenreSelect }) {
 
   return (
     <>
-      <Carousel data={movies}></Carousel>
-      <div className="dropdown">
-        <button
-          className="btn btn-secondary dropdown-toggle"
-          type="button"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          Select Genre
-        </button>
-        <ul className="dropdown-menu dropdown-menu-dark">
-          {genres.map((genre) => (
-            <li key={genre.id}>
-              <span
-                className="dropdown-item"
-                onClick={() => handleGenreSelect(genre.id)}
-              >
-                {genre.name}
-              </span>
-            </li>
-          ))}
-        </ul>
+            <div className="card text-center bg-dark border-none">
+        <div className="row row-cols-1 row-cols-md-3 g-4 m-4">
+            {genres.map((genre) => (
+               <div className="col"  key={genre.id}>  
+                <div className="card h-100"
+                 onClick={() => handleGenreSelect(genre.id)}
+                aria-current="true" >
+                  <img
+              src={require("../../imagenes/fondo.jpg")}
+              className="card-img-top"
+              alt="fondo"
+            />
+                 {genre.name}
+                 </div>
+                </div>
+              ))}
+          </div>
+          </div>
+       
+
         <Discover data={movies} />
-      </div>
     </>
   );
 }

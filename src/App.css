@@ -3,7 +3,7 @@
   padding: 0;
   }
   :root {
-    --background-first-color: #000000;
+    --background-first-color: #00050D;
     --background-color:#14141480;
     --background-button-color: #e0f004;
     --background-second-button-color: #e2f864;
@@ -11,28 +11,6 @@
     --first-color: #fffcfc;
     --second-color:#ffffff;
   }
-  [data-theme="Kawai"] {
-    --background-first-color: #e0f004;
-    --background-color:#ffffff80;
-    --background-second-color:#000000;
-    --background-button-color: #00D1E0;
-    --background-second-button-color: #E67CF3;
-    --background-display-color: #F0D4CF;
-    --first-color: #1b0220;
-    --second-color:#000000;
-  }
-  [data-theme="universe"] {
-    --background-first-color: #e0f004
-    --background-color:#14141480;
-    --background-button-color: #e0f004;
-    --background-second-button-color: #e2f864;
-    --background-display-color: #ffffff6e;
-    --first-color: #fffcfc;
-    --second-color:#ffffff;
-  }
- 
-  
-  
   body{
     background-color: var(--background-first-color);
     background-size: cover;
@@ -47,6 +25,9 @@
   .text-center{
     text-decoration:dotted;
       
+  }
+  .bg-color{
+    background-color: var(--background-first-color);
   }
   
   
