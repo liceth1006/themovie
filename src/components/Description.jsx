@@ -6,11 +6,6 @@ function Description({ trailerData, descriptionData }) {
   const { popularity, poster_path, backdrop_path, title, overview } =
     descriptionData;
 
-  const slick2Styles = {
-    background: "linear-gradient(to right, #ff7e5f, #feb47b)",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
-  };
   const youtubeUrl =
     trailerData && trailerData.key
       ? `https://www.youtube.com/embed/${trailerData.key}`
@@ -72,26 +67,26 @@ function Description({ trailerData, descriptionData }) {
             <div className="col-xxl-6 col-xl-5 col-12 d-lg-flex d-xl-block gap-3 gap-xl-0 h-100">
               <div
                 className="flex-fill px-8 py-9 mb-6 rounded card h-100 mb-4"
-                style={slick2Styles}
+                
               >
-                <div className="card h-100 overflow-scroll">
-                  <div className="card-body">
+                <div className="card h-100 overflow-scroll border-color bg-color">
+                  <div className="card-body  bg-color-trans  h-100 ">
                     <h5 className="card-title fs-1 ">{title}</h5>
                     <p className="card-text fs-2 ">
                       {" "}
                       <i className="fa-solid fa-thumbs-up"></i> {popularity}
                     </p>
-                    <p className="card-text">{overview}</p>
+                    <p className="card-text text-color1">{overview}</p>
                   </div>
                 </div>
               </div>
 
-              <div className="flex-fill px-8 py-8 rounded" style={slick2Styles}>
-                <div className="card h-100">
-                  <div className="card-body">
+              <div className="flex-fill px-8 py-8 rounded" >
+                <div className="card h-100 border-color ">
+                  <div className="card-body h-100 border-color bg-color-trans">
                     <iframe
-                      width="560"
-                      height="315"
+                      width="100%"
+                      height="400px"
                       src={youtubeUrl}
                       title={title}
                       allowFullScreen

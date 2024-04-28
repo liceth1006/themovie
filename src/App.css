@@ -14,41 +14,40 @@
     --second-color:linear-gradient(90deg, #fbcb03 0%, #ff5c00 100%);
   }
   [data-theme="Kawai"] {
-    --background-first-color: blue;
-    --background-color:#ffffff80;
-    --background-second-color:#000000;
-    --background-button-color: #00D1E0;
-    --background-second-button-color: #E67CF3;
-    --background-display-color: #F0D4CF;
-    --first-color: #1b0220;
-    --second-color:#000000;
+    --background-first-color:#010100 ;
+    --card-second-color:#000000;
+    --background-color:rgba(0, 0, 0, 0.8);
+    --background-button-color: #f08a05;
+    --color: #ffffff;
+    --first-color:  #fbb503;
+    --second-color:linear-gradient(90deg, #fbcb03 0%, #ff5c00 100%);
   }
   [data-theme="universe"] {
-    --background-first-color: #e0f004;
-    --background-color:#14141480;
-    --background-button-color: #e0f004;
-    --background-second-button-color: #e2f864;
-    --background-display-color: #ffffff6e;
-    --first-color: #fffcfc;
-    --second-color:#ffffff;
+    --background-first-color:#010100 ;
+    --card-second-color:#000000;
+    --background-color:rgba(0, 0, 0, 0.8);
+    --background-button-color: #f08a05;
+    --color: #ffffff;
+    --first-color:  #fbb503;
+    --second-color:linear-gradient(90deg, #fbcb03 0%, #ff5c00 100%);
   }
   [data-theme="Crypto"] {
-    --background-first-color:#e0f004;
-    --background-color:#14141480;
-    --background-button-color: #4fed57;
-    --background-second-button-color: #e2f864;
-    --background-display-color: #ffffff6e;
-    --first-color: #3de812;
-    --second-color:#ffff;
+    --background-first-color:#010100 ;
+    --card-second-color:#000000;
+    --background-color:rgba(0, 0, 0, 0.8);
+    --background-button-color: #f08a05;
+    --color: #ffffff;
+    --first-color:  #fbb503;
+    --second-color:linear-gradient(90deg, #fbcb03 0%, #ff5c00 100%);
   }
   [data-theme="Color"] {
-    --background-first-color: #e0f004;
-    --background-color:#f7f6f680;
-    --background-button-color: #f08a04e9;
-    --background-second-button-color: #e2f864;
-    --background-display-color: #ffffff6e;
-    --first-color: #a3f6e6;
-    --second-color:#fc0606;
+    --background-first-color:#010100 ;
+    --card-second-color:#000000;
+    --background-color:rgba(0, 0, 0, 0.8);
+    --background-button-color: #f08a05;
+    --color: #ffffff;
+    --first-color:  #fbb503;
+    --second-color:linear-gradient(90deg, #fbcb03 0%, #ff5c00 100%);
     
     
   }

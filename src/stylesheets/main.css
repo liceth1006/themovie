@@ -9,6 +9,11 @@
   color: var(--first-color);
   
 }
+.text-color1{
+  color: var(--color);
+  
+}
+
 .text-card-color{
   color: var( --card-second-color);
   
