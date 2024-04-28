@@ -1,6 +1,6 @@
 import React from 'react'
 
-function CardMovie({data,onclick}) {
+function CardMovie({data,onClick}) {
   return (
     <div class="album pb-5 ">
       <div class="container">
@@ -8,7 +8,7 @@ function CardMovie({data,onclick}) {
       {data && data.map((dataItem) => ( 
       <div class="col"key={dataItem.id}>
 
-      <div class="flip-card ">
+      <div class="flip-card "  onClick={()=> onClick(dataItem.id)}>
     <div class="flip-card-inner">
         <div class="flip-card-front">
         <img

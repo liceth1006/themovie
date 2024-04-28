@@ -1,11 +1,11 @@
 import React from "react";
 
-function Discover({ data }) {
+function Discover({ data,onMovieSelect }) {
   return (
     <div className="row row-cols-1 row-cols-md-3 g-3 m-4">
       {data.map((dataItem) => (
         <div className="col" key={dataItem.id}>
-          <div className="card h-100">
+          <div className="card h-100"  onClick={()=> onMovieSelect(dataItem.id)}>
             <img
               src={`https://image.tmdb.org/t/p/w500${dataItem.poster_path}`}
               className="card-img-top"

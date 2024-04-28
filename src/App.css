@@ -75,4 +75,7 @@
     background-color: var( --background-first-color);
     color: var(--second-color);
   }
-  
+  .mt-pt{
+    margin-top: 70px;
+    padding-top: 60px;
+  }

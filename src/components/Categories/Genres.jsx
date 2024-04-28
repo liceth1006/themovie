@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
 import Discover from "../Categories/Discover";
-import Carousel from "../Carousel";
+import Description from "../Description";
 
-function Genres({ onGenreSelect }) {
+function Genres({ onClick }) {
   const [genres, setGenres] = useState([]);
   const [movies, setMovies] = useState([]);
+  const [selectedGenreId, setSelectedGenreId] = useState(null);
+  const [descriptionData, setDescriptionData] = useState(null);
+  const [trailerData, setTrailerData] = useState(null);
+  const [selectedMovieId, setSelectedMovieId] = useState(null);
+  const [showMovieDescription, setShowMovieDescription] = useState(false);
 
   useEffect(() => {
     getGenresData();
@@ -49,38 +54,107 @@ function Genres({ onGenreSelect }) {
       .catch((err) => console.error(err));
   };
 
-  const handleGenreSelect = (genreId) => {
-    getMovieData(genreId);
-  };
+  const getDescriptionData = (selectedMovieId) => {
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1NzBiN2Y3YjYwYTUzM2JlNDkzZDVlMGRmNjBkOTI4NyIsInN1YiI6IjY2MjcyMjUwZTI5NWI0MDE4NzljOWVjMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.r9U2TEcTy5giPnclNDPLVfQbyo97JjURcwYWB_ItuWw",
+      },
+    };
 
-  return (
-    <>
-      <div className="card text-center bg-dark border-0">
+    fetch(`https://api.themoviedb.org/3/movie/${selectedMovieId}?&language=es`, options)
+      .then((response) => response.json())
+      .then((dataMovie) => {
+        setDescriptionData(dataMovie);
+        console.log(dataMovie);
+        
+       // navigate('/Description');
+      })
+      .catch((err) => console.error(err));
+
+      // Obtener datos del tráiler
+    fetch(`https://api.themoviedb.org/3/movie/${selectedMovieId}/videos?&language={language}`, options)
+    .then((response) => response.json())
+    .then((dataTrailer) => {
+      setTrailerData(dataTrailer.results[0]); // Tomar el primer tráiler de la lista
+      console.log("Trailer data:", dataTrailer.results[0]);
+    })
+    .catch((err) => console.error(err));
+};
+
+  
+const handleGenreSelect = (genreId) => {
+  setSelectedGenreId(genreId);
+  getMovieData(genreId);
+};
+
+const handleGenreDeselect = () => {
+  setSelectedGenreId(null);
+  setShowMovieDescription(false); // Asegurar que se oculte la descripción al volver a los géneros
+};
+
+const handleMovieSelect = (movieId) => {
+  setSelectedMovieId(movieId);
+  setShowMovieDescription(true);
+  getDescriptionData(movieId);
+};
+
+const handleMovieDeselect = () => {
+  setSelectedMovieId(null);
+  setShowMovieDescription(false); // Ocultar la descripción al volver atrás desde una película
+};
+return (
+  <>
+    {!selectedGenreId && !showMovieDescription && (
+      <div className="card bg-color text-center border-0">
         <div className="row row-cols-1 row-cols-md-3 g-4 m-4">
           {genres.map((genre) => (
             <div className="col" key={genre.id}>
               <div
-                className="card h-100"
+                className="card h-100 position-relative card-img"
                 onClick={() => handleGenreSelect(genre.id)}
                 aria-current="true"
               >
                 <img
-            src={require("../../imagenes/fondo.jpg")}
-            className="card-img-top"
-            alt="fondo"
-          />
-          <div class="card-img-overlay d-flex justify-content-center align-items-center">
-            <h5 className="card-title fs-1 text-light fw-bolder ">{genre.name}</h5>
-          </div>
+                  src={require("../../imagenes/fondo2.jpg")}
+                  className="card-img-top"
+                  alt="fondo"
+                />
+                <div className="card-img-overlay d-flex justify-content-center align-items-center">
+                  <h5 className="card-title fs-1 text-light fw-bolder ">
+                    {genre.name}
+                  </h5>
+                </div>
+                <div className="overlay position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50 invisible"></div>
               </div>
             </div>
           ))}
         </div>
       </div>
+    )}
 
-      <Discover data={movies} />
-    </>
-  );
+    {selectedGenreId && !showMovieDescription && (
+      <div>
+        <button onClick={handleGenreDeselect}>Back to genres</button>
+        <Discover data={movies} onMovieSelect={handleMovieSelect} />
+      </div>
+    )}
+
+    {showMovieDescription && (
+      <div>
+        <button onClick={handleMovieDeselect}>Back to genres</button>
+        <Description  descriptionData={descriptionData}
+          trailerData={trailerData}
+          onDeselect={handleMovieDeselect}></Description>
+      </div>
+    )}
+  </>
+);
 }
+
+
+
 
 export default Genres;

@@ -1,9 +1,10 @@
  import React from 'react'
 import Hero from './Hero';
- 
- function Home({data, onclick}) {
+ function Home() {
    return (
-    <Hero></Hero>
+    <div>
+      <Hero></Hero>
+    </div>
 );
 }
  export default Home

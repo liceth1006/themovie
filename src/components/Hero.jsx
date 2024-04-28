@@ -2,16 +2,27 @@ import {useState,useEffect} from "react";
 import CardSearch from "./CardSearch";
 import CardMovie from "./CardMovie";
 import Description from "./Description";
-
 function Hero() {
   const [movieData, setMovieData] = useState(null); 
   const [filmData, setFilmData] = useState(null);//datos de busqueda, consulta
   const [consultaName, setConsultaName] = useState(""); //almacenar el nombre de la pelicula
-
+  const [descriptionData, setDescriptionData] = useState(null);
+  const [trailerData, setTrailerData] = useState(null);
+  const [selectedMovieId, setSelectedMovieId] = useState(null);
+  const [showMovieDescription, setShowMovieDescription] = useState(false);
+  
+  useEffect(() => {
+    getMovieData()
+  }, []);
+  
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     getFilmData();
   };
+
+
+
   const getMovieData = () => {
     const options = {
       method: "GET",
@@ -34,7 +45,36 @@ function Hero() {
       .catch((err) => console.error(err));
   };
 
+  const getDescriptionData = (selectedMovieId) => {
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1NzBiN2Y3YjYwYTUzM2JlNDkzZDVlMGRmNjBkOTI4NyIsInN1YiI6IjY2MjcyMjUwZTI5NWI0MDE4NzljOWVjMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.r9U2TEcTy5giPnclNDPLVfQbyo97JjURcwYWB_ItuWw",
+      },
+    };
 
+    fetch(`https://api.themoviedb.org/3/movie/${selectedMovieId}?&language=es`, options)
+      .then((response) => response.json())
+      .then((dataMovie) => {
+        setDescriptionData(dataMovie);
+        console.log(dataMovie);
+        
+       // navigate('/Description');
+      })
+      .catch((err) => console.error(err));
+
+      // Obtener datos del tráiler
+    fetch(`https://api.themoviedb.org/3/movie/${selectedMovieId}/videos?&language={language}`, options)
+    .then((response) => response.json())
+    .then((dataTrailer) => {
+      setTrailerData(dataTrailer.results[0]); // Tomar el primer tráiler de la lista
+      console.log("Trailer data:", dataTrailer.results[0]);
+    })
+    .catch((err) => console.error(err));
+};
+  
 
 
   const getFilmData = () => {
@@ -70,12 +110,24 @@ function Hero() {
     setConsultaName("");
     setFilmData(null);
   };
+
+  const handleMovieSelect = (movieId) => {
+    setSelectedMovieId(movieId);
+    setShowMovieDescription(true);
+    getDescriptionData(movieId);
+  };
+
+  const handleMovieDeselect = () => {
+    setSelectedMovieId(null);
+    setShowMovieDescription(false);
+  };
+
+
   
-  useEffect(() => {
-    getMovieData()
-  }, []);
   return (
-    <div className="px-4 pt-5 my-5 text-center border-bottom bg-color pt-md-5 ">
+    <>
+    {!selectedMovieId && (
+    <div className="px-4 my-5 text-center  bg-color ">
       <h1 className="display-4 fw-bold title-color mt-5 pt-md-5  "> Descubre el Mundo del Cine</h1>
       <div className="col-lg-6 mx-auto">
         <p className="lead mb-4">
@@ -102,15 +154,29 @@ function Hero() {
         </div>
         </form>
       </div>
+ </div>
+  )}
+      {filmData && filmData[0] && !showMovieDescription && (
+        <CardSearch data={filmData} onClick={handleMovieSelect} />
+      )}
 
-      { filmData && filmData[0] && (
-      <CardSearch data={filmData} onClick={getFilmData}> </CardSearch>
+      {movieData && movieData[0] && !showMovieDescription && (
+        <CardMovie data={movieData} onClick={handleMovieSelect} />
       )}
-          {movieData && movieData[0] && (
-      <CardMovie data={movieData} > </CardMovie>
+
+      {showMovieDescription && (
+        <di>
+          <button onClick={handleMovieDeselect}>Back to genres</button>
+        <Description
+          descriptionData={descriptionData}
+          trailerData={trailerData}
+          onDeselect={handleMovieDeselect}
+        />
+        </di>
       )}
-      <Description></Description>
-    </div>
+   
+      </>
+   
   );
 }
 
