@@ -1,6 +1,6 @@
 function Description({ trailerData, descriptionData }) {
-  if (!descriptionData || !descriptionData.popularity) {
-    return <div>Cargando...</div>;
+  if (!descriptionData ) {
+    return ;
   }
 
   const { popularity, poster_path, backdrop_path, title, overview } =

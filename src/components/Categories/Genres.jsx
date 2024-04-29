@@ -92,7 +92,7 @@ const handleGenreSelect = (genreId) => {
 
 const handleGenreDeselect = () => {
   setSelectedGenreId(null);
-  setShowMovieDescription(false); // Asegurar que se oculte la descripción al volver a los géneros
+  setShowMovieDescription(false); 
 };
 
 const handleMovieSelect = (movieId) => {
@@ -103,11 +103,11 @@ const handleMovieSelect = (movieId) => {
 
 const handleMovieDeselect = () => {
   setSelectedMovieId(null);
-  setShowMovieDescription(false); // Ocultar la descripción al volver atrás desde una película
+  setShowMovieDescription(false); 
 };
 return (
   <>
-    {!selectedGenreId && !showMovieDescription && (
+    {!selectedGenreId && !showMovieDescription  && (
       <div className="card bg-color text-center border-0">
         <div className="row row-cols-1 row-cols-md-3 g-4 m-4">
           {genres.map((genre) => (
@@ -146,7 +146,7 @@ return (
       </div>
     )}
 
-    {showMovieDescription && (
+    {showMovieDescription && selectedMovieId && (
       <div>
         <div className="d-grid gap-2 d-sm-flex  justify-content-end pe-5 mb-5">
           <button type="reset" className="btn border-color btn-lg px-4" onClick={handleGenreDeselect}>
