@@ -18,6 +18,9 @@
   color: var( --card-second-color);
   
 }
+.color-border{
+  border-bottom:  1px solid var(--first-color)
+}
 .title-color{
   color: var(--first-color);
   background-image: var(--second-color);

@@ -14,22 +14,24 @@
     --second-color:linear-gradient(90deg, #fbcb03 0%, #ff5c00 100%);
   }
   [data-theme="Kawai"] {
-    --background-first-color:#010100 ;
+    --background-first-color:#27202a ;
     --card-second-color:#000000;
     --background-color:rgba(0, 0, 0, 0.8);
-    --background-button-color: #f08a05;
+    --background-button-color: #3cb7ec;
     --color: #ffffff;
-    --first-color:  #fbb503;
-    --second-color:linear-gradient(90deg, #fbcb03 0%, #ff5c00 100%);
+    --first-color:  #d796fa;
+    --second-color:linear-gradient(90deg, #a710f9,#3cb7ec);;
   }
   [data-theme="universe"] {
-    --background-first-color:#010100 ;
-    --card-second-color:#000000;
-    --background-color:rgba(0, 0, 0, 0.8);
-    --background-button-color: #f08a05;
-    --color: #ffffff;
-    --first-color:  #fbb503;
-    --second-color:linear-gradient(90deg, #fbcb03 0%, #ff5c00 100%);
+    --background-first-color:#f1f2f6be ;
+    --card-second-color:#ffffff;
+    --background-color:#d0d2d8be;
+    --background-button-color: #ed5761;
+    --color: #000000;
+    --first-color:  #ed5761
+    ;
+    --second-color:linear-gradient(94deg, #ed5761,#404b62);;
+                                  
   }
   [data-theme="Crypto"] {
     --background-first-color:#010100 ;
@@ -41,13 +43,14 @@
     --second-color:linear-gradient(90deg, #fbcb03 0%, #ff5c00 100%);
   }
   [data-theme="Color"] {
-    --background-first-color:#010100 ;
-    --card-second-color:#000000;
-    --background-color:rgba(0, 0, 0, 0.8);
-    --background-button-color: #f08a05;
-    --color: #ffffff;
-    --first-color:  #fbb503;
-    --second-color:linear-gradient(90deg, #fbcb03 0%, #ff5c00 100%);
+    --background-first-color: #0F0C17;
+    --card-second-color: #000000;
+    --background-color: rgba(27, 27, 27, 0.8);
+    --background-button-color: #FF5733;
+    --color: #E8E8E8;
+    --first-color: #f63c13;
+    --second-color: linear-gradient(90deg, #ff0000 0%, #ffffff 100%);
+    
     
     
   }

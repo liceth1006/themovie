@@ -130,7 +130,7 @@ function Hero() {
     <div className="px-4 my-5 text-center  bg-color ">
       <h1 className="display-4 fw-bold title-color mt-5 pt-md-5  "> Descubre el Mundo del Cine</h1>
       <div className="col-lg-6 mx-auto">
-        <p className="lead mb-4">
+        <p className="lead mb-4 text-color1">
           ¡Bienvenido a nuestro universo cinematográfico! Explora miles de
           películas, programas de televisión y mucho más.
         </p>
@@ -142,7 +142,7 @@ function Hero() {
             placeholder="nombre pelicula"
             onChange={handleChange} value={consultaName}
           />
-          <label for="floatingInput">pelicula</label>
+          <label htmlFor="floatingInput">pelicula</label>
         </div>
         <div className="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
           <button type="sumit" className="btn bg-button-color btn-lg px-4 me-sm-3">
@@ -165,14 +165,18 @@ function Hero() {
       )}
 
       {showMovieDescription && (
-        <di>
-          <button onClick={handleMovieDeselect}>Back to genres</button>
+        <div>
+          <div className="d-grid gap-2 d-sm-flex  justify-content-end pe-5 mb-5">
+          <button type="reset" className="btn border-color btn-lg px-4" onClick={handleMovieDeselect}>
+          <i className="fa-solid fa-hand-point-left"></i> Volver
+          </button>
+          </div>
         <Description
           descriptionData={descriptionData}
           trailerData={trailerData}
           onDeselect={handleMovieDeselect}
         />
-        </di>
+        </div>
       )}
    
       </>

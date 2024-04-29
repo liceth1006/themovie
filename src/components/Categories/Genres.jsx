@@ -137,14 +137,22 @@ return (
 
     {selectedGenreId && !showMovieDescription && (
       <div>
-        <button onClick={handleGenreDeselect}>Back to genres</button>
+         <div className="d-grid gap-2 d-sm-flex  justify-content-end pe-5 mb-5">
+          <button type="reset" className="btn border-color btn-lg px-4" onClick={handleGenreDeselect}>
+          <i className="fa-solid fa-hand-point-left"></i> Volver
+          </button>
+          </div>
         <Discover data={movies} onMovieSelect={handleMovieSelect} />
       </div>
     )}
 
     {showMovieDescription && (
       <div>
-        <button onClick={handleMovieDeselect}>Back to genres</button>
+        <div className="d-grid gap-2 d-sm-flex  justify-content-end pe-5 mb-5">
+          <button type="reset" className="btn border-color btn-lg px-4" onClick={handleGenreDeselect}>
+          <i className="fa-solid fa-hand-point-left"></i> Volver
+          </button>
+          </div>
         <Description  descriptionData={descriptionData}
           trailerData={trailerData}
           onDeselect={handleMovieDeselect}></Description>

@@ -12,7 +12,7 @@ function Header() {
     selectTheme(index);
   };
   return (
-    <header className="d-flex flex-wrap align-items-center bg-color-trans justify-content-center justify-content-md-between py-3 mb-4 border-bottom fixed-top  mb-5 ">
+    <header className="d-flex flex-wrap align-items-center bg-color-trans justify-content-center justify-content-md-between py-3 mb-4  fixed-top  mb-5 color-border ">
       <div className="col-md-3 mb-2 mb-md-0  ">
         <Link to="/" className="navbar-brand mr-5">
           <div className="d-flex flex-column align-items-center">
