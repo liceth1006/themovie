@@ -18,7 +18,7 @@ function Footer() {
     <div className=" col-md-4 justify-content-end">
       <h3 className='text-color'>Santiago Parra</h3>
       <h3 className='text-color'>Alex Rodriguez</h3>
-      <h3 className='text-color'> <i>Liceth Olmos</i></h3>
+      <h3 className='text-color'> Liceth Olmos</h3>
     </div>
   </footer>
 </div>

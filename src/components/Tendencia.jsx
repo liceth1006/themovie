@@ -10,7 +10,7 @@ function Tendencia() {
     const fetchMovies = async () => {
       try {
         const response = await fetch(
-          "https://api.themoviedb.org/3/movie/popular?language=es&page=1",
+          "https://api.themoviedb.org/3/trending/movie/week?language=es",
           {
             headers: {
               Authorization:
@@ -37,14 +37,14 @@ function Tendencia() {
               <div className="flip-card-inner">
                 <div className="flip-card-front">
                   <img
-                    className="card-img-top"
+                    className="card-img"
                     src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                     alt={movie.title}
                   />
                 </div>
                 <div className="flip-card-back">
-                  <h5 className="card-title">{movie.title}</h5>
-                  <p className="card-text">{movie.overview}</p>
+                  <h5 className="card-title fs-3 text-card-color">{movie.title}</h5>
+                  <p className="card-text text-card-color">{movie.overview}</p>
                 </div>
               </div>
             </div>
