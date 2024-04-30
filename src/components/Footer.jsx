@@ -16,8 +16,8 @@ function Footer() {
             </span>
           </div>
     <div className=" col-md-4 justify-content-end">
-      <h3 className='text-color'>santi</h3>
-      <h3 className='text-color'>alex</h3>
+      <h3 className='text-color'>Santiago Parra</h3>
+      <h3 className='text-color'>Alex Rodriguez</h3>
       <h3 className='text-color'> <i>Liceth Olmos</i></h3>
     </div>
   </footer>

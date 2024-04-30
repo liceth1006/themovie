@@ -8,6 +8,7 @@ function Header() {
     const theme = themes[index];
     document.documentElement.setAttribute("data-theme", theme);
   };
+  
   const handleItemClick = (index) => {
     selectTheme(index);
   };
