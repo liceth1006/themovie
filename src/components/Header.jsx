@@ -33,7 +33,7 @@ function Header() {
           </Link>
         </li>
         <li>
-          <Link to="/" className="nav-link px-2 text-color"><i className="fa-solid fa-arrow-trend-up"></i> Tendencia
+          <Link to="/Tendencia" className="nav-link px-2 text-color"><i className="fa-solid fa-arrow-trend-up"></i> Favoritas
           </Link>
         </li> <li>
           <Link to="/Categorias" className="nav-link px-2 text-color"><i className="fa-solid fa-layer-group"></i> Categorias
