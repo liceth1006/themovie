@@ -7,6 +7,7 @@ import Categories from './components/Categories/Categories';
 import Home from './components/Home';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Tendencia from './components/Tendencia'; 
 function App() {
   return (
     <Router>
@@ -15,6 +16,7 @@ function App() {
    <div className='mt-pt'>
      <Routes>
      <Route path="/Categorias" element={<Categories />} />
+     <Route path='/Tendencia' element={<Tendencia />} />
      <Route path="/" element={<Home />} />
      </Routes>
      
